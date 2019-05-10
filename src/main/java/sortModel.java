@@ -49,11 +49,21 @@ public class sortModel {
 //                        list.add(map);
                         model="Others";
                     }
+                    String year=(String)getCellFormatValue(row.getCell(5));
+                    boolean flag_year=true;
+                    for(int j=0;j<18;j++){
+                        String my="MY";
+                        if(j<10){
+                            my+="0";
+                        }
+                        my+=String.valueOf(j);
+                        if(year.contains(my))flag_year=false;
+                    }
+                    if(flag_year){
                         String fileName=(String)getCellFormatValue(row.getCell(0));
                         String extension=fileName.substring(fileName.lastIndexOf('.')+1,fileName.length());
                         moveTotherFolders(model,fileName,extension);
-
-
+                    }
                 }else{
                     break;
                 }
